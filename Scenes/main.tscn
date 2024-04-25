@@ -11,22 +11,6 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8333u"]
 height = 32.0
 
-[sub_resource type="Animation" id="Animation_nsy02"]
-resource_name = "idle"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, -10)]
-}
-
 [sub_resource type="Animation" id="Animation_yyusc"]
 resource_name = "Flying"
 length = 0.3
@@ -41,6 +25,22 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [ExtResource("3_cc353"), ExtResource("1_h8e7j"), ExtResource("5_u3wa2")]
+}
+
+[sub_resource type="Animation" id="Animation_nsy02"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -10)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bj55v"]
@@ -83,7 +83,7 @@ libraries = {
 script = ExtResource("6_j1i0s")
 
 [node name="Ground1" type="Area2D" parent="Ground"]
-position = Vector2(24, 279)
+position = Vector2(25, 201)
 
 [node name="Sprite2D" type="Sprite2D" parent="Ground/Ground1"]
 texture = ExtResource("7_iswwg")
@@ -93,7 +93,7 @@ position = Vector2(0, -48)
 shape = SubResource("RectangleShape2D_4f1s2")
 
 [node name="Ground2" type="Area2D" parent="Ground"]
-position = Vector2(24, 279)
+position = Vector2(25, 201)
 
 [node name="Sprite2D" type="Sprite2D" parent="Ground/Ground2"]
 position = Vector2(336, 0)

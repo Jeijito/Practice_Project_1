@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 class_name bird
 
+signal bird_crashed
+
 @export var gravity = 900.0
 @export var jump_force = -300 
 var rotation_speed = 2
@@ -44,3 +46,5 @@ func rotate_bird():
 	elif velocity.y < 0 and rad_to_deg(rotation) > -30:
 		rotation -= rotation_speed * deg_to_rad(1)
 	
+func _on_body_entered(body):
+	pass # Replace with function body.

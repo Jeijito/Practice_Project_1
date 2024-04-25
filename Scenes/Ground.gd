@@ -19,3 +19,4 @@ func _process(delta): #changes position of sprites (changing it by the (assigned
 	#if sprite2 has left completely the screen its moved to the right of sprite1
 	if sprite2.global_position.x < -sprite2.texture.get_width():
 		sprite2.global_position.x = sprite1.global_position.x + sprite1.texture.get_width()
+

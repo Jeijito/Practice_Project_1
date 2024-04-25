@@ -82,13 +82,13 @@ libraries = {
 [node name="Ground" type="Node" parent="."]
 script = ExtResource("6_j1i0s")
 
-[node name="Ground1" type="Area2D" parent="Ground"]
+[node name="Area2D" type="Area2D" parent="Ground"]
 position = Vector2(25, 201)
 
-[node name="Sprite2D" type="Sprite2D" parent="Ground/Ground1"]
+[node name="Sprite2D" type="Sprite2D" parent="Ground/Area2D"]
 texture = ExtResource("7_iswwg")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/Ground1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/Area2D"]
 position = Vector2(0, -48)
 shape = SubResource("RectangleShape2D_4f1s2")
 
@@ -102,3 +102,6 @@ texture = ExtResource("7_iswwg")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/Ground2"]
 position = Vector2(336, -48)
 shape = SubResource("RectangleShape2D_i45vu")
+
+[connection signal="body_entered" from="Ground/Area2D" to="bird" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Ground2" to="bird" method="_on_body_entered"]

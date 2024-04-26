@@ -8,6 +8,12 @@
 [ext_resource type="Script" path="res://Scenes/Ground.gd" id="6_j1i0s"]
 [ext_resource type="Texture2D" uid="uid://44um7crl567t" path="res://Assets/base.png" id="7_iswwg"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4f1s2"]
+size = Vector2(336, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i45vu"]
+size = Vector2(336, 12)
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8333u"]
 height = 32.0
 
@@ -49,16 +55,34 @@ _data = {
 "idle": SubResource("Animation_nsy02")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4f1s2"]
-size = Vector2(336, 12)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_i45vu"]
-size = Vector2(336, 12)
-
 [node name="Main" type="Node"]
 
 [node name="Background" type="Sprite2D" parent="."]
 texture = ExtResource("3_2rgh6")
+
+[node name="Ground" type="Node" parent="."]
+script = ExtResource("6_j1i0s")
+
+[node name="Ground1" type="Area2D" parent="Ground"]
+position = Vector2(25, 201)
+
+[node name="Sprite2D" type="Sprite2D" parent="Ground/Ground1"]
+texture = ExtResource("7_iswwg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/Ground1"]
+position = Vector2(0, -48)
+shape = SubResource("RectangleShape2D_4f1s2")
+
+[node name="Ground2" type="Area2D" parent="Ground"]
+position = Vector2(25, 201)
+
+[node name="Sprite2D" type="Sprite2D" parent="Ground/Ground2"]
+position = Vector2(336, 0)
+texture = ExtResource("7_iswwg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/Ground2"]
+position = Vector2(336, -48)
+shape = SubResource("RectangleShape2D_i45vu")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -79,29 +103,5 @@ libraries = {
 "": SubResource("AnimationLibrary_bj55v")
 }
 
-[node name="Ground" type="Node" parent="."]
-script = ExtResource("6_j1i0s")
-
-[node name="Area2D" type="Area2D" parent="Ground"]
-position = Vector2(25, 201)
-
-[node name="Sprite2D" type="Sprite2D" parent="Ground/Area2D"]
-texture = ExtResource("7_iswwg")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/Area2D"]
-position = Vector2(0, -48)
-shape = SubResource("RectangleShape2D_4f1s2")
-
-[node name="Ground2" type="Area2D" parent="Ground"]
-position = Vector2(25, 201)
-
-[node name="Sprite2D" type="Sprite2D" parent="Ground/Ground2"]
-position = Vector2(336, 0)
-texture = ExtResource("7_iswwg")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/Ground2"]
-position = Vector2(336, -48)
-shape = SubResource("RectangleShape2D_i45vu")
-
-[connection signal="body_entered" from="Ground/Area2D" to="bird" method="_on_body_entered"]
-[connection signal="body_entered" from="Ground/Ground2" to="bird" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Ground1" to="Ground" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Ground2" to="Ground" method="_on_body_entered"]

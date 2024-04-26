@@ -1,6 +1,9 @@
 extends Node
 
 class_name Ground
+
+signal bird_crashed #sort of a signal telling the rest of the program something happened
+
 @export var speed = -150
 
 @onready var sprite1 = $Ground1/Sprite2D
@@ -20,3 +23,13 @@ func _process(delta): #changes position of sprites (changing it by the (assigned
 	if sprite2.global_position.x < -sprite2.texture.get_width():
 		sprite2.global_position.x = sprite1.global_position.x + sprite1.texture.get_width()
 
+
+
+func _on_body_entered(body):
+	bird_crashed.emit()
+	stop()
+	(body as bird).stop()
+	
+	
+func stop():
+	speed = 0

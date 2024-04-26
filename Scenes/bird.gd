@@ -12,13 +12,14 @@ var rotation_speed = 2
 
 var max_speed = 400
 var is_started = false
+var should_process_input = true
 
 func  _ready():
 	velocity = Vector2.ZERO
 	animation_player.play("idle")
 	
 func _physics_process(delta): #using physics process instead of process because the change of position is based on velicity rather than changing position
-	if Input.is_action_just_pressed("jump"):
+	if Input.is_action_just_pressed("jump") && should_process_input:
 		if !is_started:
 			animation_player.play("Flying")
 			is_started = true
@@ -46,5 +47,8 @@ func rotate_bird():
 	elif velocity.y < 0 and rad_to_deg(rotation) > -30:
 		rotation -= rotation_speed * deg_to_rad(1)
 	
-func _on_body_entered(body):
-	pass # Replace with function body.
+func stop():
+	animation_player.stop()
+	gravity = 0
+	velocity = Vector2.ZERO
+	should_process_input = false

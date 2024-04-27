@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dkl7cnivf2mkr"]
+
+[node name="PipeSpawner" type="Node"]
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 2.0
